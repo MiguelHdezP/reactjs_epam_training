@@ -1,0 +1,10 @@
+@import "../../../styles/main.scss";
+
+.input-text-style {
+  @include inputsStyles;
+
+  &:focus {
+    color: $white;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}

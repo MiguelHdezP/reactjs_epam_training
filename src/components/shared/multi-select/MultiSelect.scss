@@ -1,0 +1,12 @@
+@import "../../../styles/main.scss";
+
+.multi-select-style {
+  @include inputsStyles;
+  color: $white;
+  text-align: left;
+  
+  &:focus {
+    color: $white;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
