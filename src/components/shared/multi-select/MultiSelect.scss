@@ -1,12 +1,19 @@
-@import "../../../styles/main.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
-.multi-select-style {
-  @include inputsStyles;
-  color: $white;
-  text-align: left;
-  
-  &:focus {
+.multiselect-dropdown {
+  max-width: 20%;
+
+  .multi-select-style {
+    @include inputsStyles;
     color: $white;
-    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+
+    &:focus {
+      color: $white;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 }

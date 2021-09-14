@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Button({ text, classStyle }) {
+export default function SimpleButton({ text = "", classStyle = "" }) {
   return (
     <button type="button" className={classStyle}>
       {text}

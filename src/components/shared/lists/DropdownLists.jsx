@@ -1,7 +1,7 @@
 import React from "react";
 import "./DropDownLists.scss"
 
-export default function Lists({ lists }) {
+export default function Lists({ lists = [] }) {
   return (
     <ul className="dropdown-menu">
       {lists.map((elem, index) => (

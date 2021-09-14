@@ -1,7 +1,12 @@
-@import "../../../styles/main.scss";
+@import "../../../styles/variables.scss";
 
 .dropdown-menu {
+  background-color: $darkGray;
+  margin: 0;
+  padding: 1rem;
+
   .dropdown-menu-list {
+    list-style: none;
     label {
       color: $white;
       display: inline-block;
