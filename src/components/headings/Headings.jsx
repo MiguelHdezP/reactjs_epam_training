@@ -1,7 +1,7 @@
 import React from "react";
 import "./Headings.scss";
 
-export default function Headings({ type, text }) {
+export default function Headings({ type = "", text = "" }) {
   let heading;
   switch (type) {
     case "h1":
