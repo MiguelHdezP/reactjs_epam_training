@@ -3,7 +3,6 @@ import Headings from "../headings/Headings";
 import "./SearchResultsCard.scss";
 
 export default function SearchResultsCard({ movieData }) {
-  console.log("Ponyo: ", movieData);
   //const [title, genres] = movieData;
   // Question: Why movieData is not iterable?
   return (
