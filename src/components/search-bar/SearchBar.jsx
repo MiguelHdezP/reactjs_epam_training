@@ -22,10 +22,7 @@ export default function SearchBar() {
   return (
     <>
       <div className="search-bar">
-        <InputText
-          placeholderText={"What do you want to watch?"}
-          type={"text"}
-        />
+        <InputText placeholderText={"What do you want to watch?"} />
         <ActionButton text={"Search"} click={searchMovies} />
       </div>
       <div className="search-results">{movies || movies}</div>
