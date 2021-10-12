@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.movieCard {
+  color: $lightFontGray;
+  margin: 0 0.7rem 5rem;
+  position: relative;
+  .MovieCard-options {
+    background-color: $mediumGray;
+    border: none;
+    border-radius: 50%;
+    color: $white;
+    cursor: pointer;
+    left: 86%;
+    padding: 0 0.85rem;
+    position: absolute;
+    top: 1%;
+    &:after {
+      content: "\022EE";
+      font-size: 2rem;
+    }
+    &:hover {
+      background-color: $darkGray;
+    }
+  }
+  .movieCard-image {
+    max-height: 34rem;
+  }
+  .movieCard-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    .movieCard-info-year {
+      border: 1px solid $borderGray;
+      @include borderRadius(4px);
+      font-size: 0.875rem;
+      margin: 0.7rem 0 0;
+      padding: 0.3rem 1.1rem;
+    }
+  }
+  .movieCard-genres {
+    color: $borderGray;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}

@@ -1,0 +1,52 @@
+@import "../../styles/variables.scss";
+
+.genresNav {
+  border-bottom: 2px solid $baseGray;
+  box-shadow: 0 2px 0 $black;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  position: relative;
+  text-transform: uppercase;
+  .genresNav-activeBar {
+    border-bottom: 3px solid $redPink;
+    position: absolute;
+    width: 2rem;
+    top: 3.2rem;
+  }
+  .genresNav-menu {
+    display: flex;
+    flex-grow: 2;
+    padding: 0;
+    li {
+      border-width: 100%;
+      cursor: pointer;
+      list-style: none;
+      margin-right: 2rem;
+    }
+    .genresNav-menu-active {
+    }
+  }
+  .genresNav-filter {
+    align-items: center;
+    display: flex;
+    justify-content: right;
+    flex-grow: 1;
+    span {
+      color: $lightFontGray;
+      font-weight: 300;
+      margin-right: 1.5rem;
+    }
+    .genresNav-filter-options {
+      cursor: pointer;
+      .genresNav-filter-options-downArrow {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid $redPink;
+        font-size: 0.188rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}

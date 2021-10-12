@@ -1,10 +1,9 @@
+import PropTypes from "prop-types";
 import React from "react";
-import Headings from "../headings/Headings";
+import Headings from "../shared/headings/Headings";
 import "./SearchResultsCard.scss";
 
 export default function SearchResultsCard({ movieData }) {
-  //const [title, genres] = movieData;
-  // Question: Why movieData is not iterable?
   return (
     <div className="search-results-card">
       <img src="" alt="" />
@@ -13,3 +12,9 @@ export default function SearchResultsCard({ movieData }) {
     </div>
   );
 }
+
+SearchResultsCard.propTypes = {
+  movieData: PropTypes.shape({
+    genres: PropTypes.arrayOf(PropTypes.string),
+  }),
+};

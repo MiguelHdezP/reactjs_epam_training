@@ -1,9 +1,10 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
 
-.input-text-style {
+.textarea-style {
   @include inputsStyles;
   background-color: rgba(50, 50, 50, 0.8);
+  width: 100%;
 
   &:focus {
     color: $white;

@@ -1,0 +1,15 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
+
+.buttonIcon {
+  @include borderRadius(4px);
+  border: none;
+  background-color: rgba(96, 96, 96, 0.68);
+  color: $redPink;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 0.5rem 1.5rem;
+  &:hover {
+    background-color: rgba(63, 63, 63, 0.9);
+  }
+}

@@ -1,0 +1,35 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.addMovie-heading {
+  clear: both;
+}
+
+.addMovie-closeButton {
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin-bottom: 1rem;
+}
+
+.addMovie-form {
+  display: grid;
+  grid-template-areas:
+    "inputTitle inputDate"
+    "inputURL inputRating"
+    "inputGenre inputMinutes"
+    "inputTextarea inputTextarea"
+    "actionButtons actionButtons";
+
+  .addMovie-actionButtons {
+    grid-area: actionButtons;
+    display: flex;
+    justify-content: right;
+    margin: 1.5rem 0;
+  }
+
+  .addMovie-resetButton {
+    background-color: unset;
+    border: 1px solid $redPink;
+    color: $redPink;
+  }
+}

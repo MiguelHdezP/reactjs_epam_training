@@ -1,58 +1,75 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/layout.scss";
 import "./styles/base.scss";
-import Counter from "./components/counter/Counter";
 import SearchBar from "./components/search-bar/SearchBar";
-import Headings from "./components/headings/Headings";
-import Label from "./components/shared/label/Label";
-import MultiSelect from "./components/shared/multi-select/MultiSelect";
+import Headings from "./components/shared/headings/Headings";
+import ButtonIcon from "./components/shared/buttons/button-icon/ButtonIcon";
+import HeaderLogo from "./assets/images/netflixroulette.png";
+import MovieCardsList from "./components/movie-cards-list/MovieCardsList";
+import GenresNav from "./components/genresNav/GenresNav";
 import { MoviesContext } from "./context/MoviesContext";
+import Modal from "./components/shared/modal/Modal";
+import AddMovie from "./components/add-movie/AddMovie";
 
-export default class App extends Component {
-  state = {
-    data: [],
-  };
+export default function App() {
+  const [dataMovies, setDataMovies] = useState([]);
+  const [closeModal, setCloseModal] = useState(false);
 
-  async componentDidMount() {
+  useEffect(async () => {
     const URL = "http://localhost:4000/movies";
     try {
       const response = await fetch(URL);
       const movies = await response.json();
-      this.setState({ data: movies });
+      setDataMovies(movies.data);
     } catch (err) {
       alert(err);
     }
+  }, []);
+
+  //there is no need to do this, but I'm just practicing wrapping a bunch of useful functions and pass them on as object
+  function actions() {
+    function CloseModal() {
+      setCloseModal(!closeModal);
+    }
+    return { CloseModal };
   }
 
-  render() {
-    return (
-      <MoviesContext.Provider value={this.state.data}>
-        <main className="container">
-          <section className="container-section">
-            <Headings type={"h1"} text={"Counter"} />
-            <Counter />
-          </section>
-          <section className="container-section">
-            <Headings type={"h1"} text={"Search Bar"} />
+  return (
+    <MoviesContext.Provider value={dataMovies}>
+      {closeModal && (
+        <Modal>
+          <AddMovie actions={actions()} />
+        </Modal>
+      )}
+      <main className="container">
+        <header className="container-mainHeader">
+          <div className="container-sections">
+            <img src={HeaderLogo} alt="Netflix Roulette Logo" />
+            <ButtonIcon text="Add Movie" click={actions().CloseModal} />
+          </div>
+          <div className="container-searchbox">
+            <Headings
+              type="h1"
+              text="Find your movie"
+              styleAdjustment="container-searchbox-heading"
+            />
             <SearchBar />
-          </section>
-          <section className="container-section">
-            <Headings type={"h1"} text={"Genre Toggle"} />
-            <div style={{ margin: "10px" }}>
-              <Label text={"Genre"} />
-              <MultiSelect
-                options={[
-                  "Select Genre",
-                  "Crime",
-                  "Documentary",
-                  "Horror",
-                  "Comedy",
-                ]}
-              />
-            </div>
-          </section>
-        </main>
-      </MoviesContext.Provider>
-    );
-  }
+          </div>
+        </header>
+        <section className="container-moviesSection">
+          <header className="container-moviesSection-header">
+            <GenresNav />
+          </header>
+          <div className="container-moviesSection-list">
+            <Headings
+              type="h3"
+              text={`${dataMovies.length} movies found`}
+              styleAdjustment="container-moviesSection-list-heading"
+            />
+            <MovieCardsList movieList={dataMovies} />
+          </div>
+        </section>
+      </main>
+    </MoviesContext.Provider>
+  );
 }

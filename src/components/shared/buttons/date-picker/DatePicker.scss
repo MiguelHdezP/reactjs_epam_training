@@ -1,9 +1,10 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/mixins.scss";
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
 
-.input-text-style {
+.input-date-style {
   @include inputsStyles;
   background-color: rgba(50, 50, 50, 0.8);
+  color: $baseGray;
 
   &:focus {
     color: $white;

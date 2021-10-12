@@ -1,0 +1,19 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  height: 100vw;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  .modal-content {
+    color: #fff;
+    margin: 0 auto;
+    position: relative;
+    width: 80%;
+    top: 5%;
+  }
+}

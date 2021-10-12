@@ -1,0 +1,8 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.modal-container {
+  background-color: $darker;
+  padding: 3rem;
+  width: auto;
+}
