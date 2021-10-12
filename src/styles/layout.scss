@@ -1,0 +1,18 @@
+@import "./variables.scss";
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $baseGray;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  margin: 4rem auto;
+  width: 90%;
+}
+
+.container-section {
+  border-bottom: 2px solid $white;
+  padding: 2rem 0;
+}

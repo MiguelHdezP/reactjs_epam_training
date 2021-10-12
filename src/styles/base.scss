@@ -1,0 +1,17 @@
+@import "./variables.scss";
+
+label {
+  color: $redPink;
+  display: block;
+  font-weight: 500;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+li {
+  list-style: none;
+}
+
+input[type=checkbox] {
+  display: inline-block;
+}
