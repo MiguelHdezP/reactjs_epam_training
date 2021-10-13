@@ -9,21 +9,25 @@ import MovieCardsList from "./components/movie-cards-list/MovieCardsList";
 import GenresNav from "./components/genresNav/GenresNav";
 import { MoviesContext } from "./context/MoviesContext";
 import Modal from "./components/shared/modal/Modal";
-import AddMovie from "./components/add-movie/AddMovie";
+import AddMovieForm from "./components/add-movie-form/AddMovieForm";
 
 export default function App() {
   const [dataMovies, setDataMovies] = useState([]);
   const [closeModal, setCloseModal] = useState(false);
 
-  useEffect(async () => {
-    const URL = "http://localhost:4000/movies";
-    try {
-      const response = await fetch(URL);
-      const movies = await response.json();
-      setDataMovies(movies.data);
-    } catch (err) {
-      alert(err);
+  useEffect(() => {
+    async function fetchMovies() {
+      const URL = "http://localhost:4000/movies";
+      try {
+        const response = await fetch(URL);
+        const movies = await response.json();
+        setDataMovies(movies.data);
+      } catch (err) {
+        alert(err);
+      }
     }
+
+    fetchMovies();
   }, []);
 
   //there is no need to do this, but I'm just practicing wrapping a bunch of useful functions and pass them on as object
@@ -38,7 +42,7 @@ export default function App() {
     <MoviesContext.Provider value={dataMovies}>
       {closeModal && (
         <Modal>
-          <AddMovie actions={actions()} />
+          <AddMovieForm actions={actions()} />
         </Modal>
       )}
       <main className="container">

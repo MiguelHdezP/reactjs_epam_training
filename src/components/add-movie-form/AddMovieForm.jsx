@@ -1,5 +1,5 @@
 import React from "react";
-import "./AddMovie.scss";
+import "./AddMovieForm.scss";
 import ModalContainer from "../shared/modal-container/ModalContainer";
 import Headings from "../shared/headings/Headings";
 import ActionButton from "../shared/buttons/action-button/ActionButton";
