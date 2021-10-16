@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { MoviesContext } from "../../context/MoviesContext";
 import "./MovieCardsList.scss";
 import MovieCard from "../movie-card/MovieCard";
 import ErrorBoundary from "../shared/error-handling/ErrorBoundary";
@@ -7,7 +8,8 @@ import Modal from "../shared/modal/Modal";
 import DeleteMovieForm from "../delete-movie-form/DeleteMovieForm";
 import EditMovieForm from "../edit-movie-form/EditMovieForm";
 
-export default function MovieCardsList({ movieList }) {
+export default function MovieCardsList() {
+  const movieList = useContext(MoviesContext);
   const [toggleModalDelete, setToggleModalDelete] = useState(false);
   const [toggleModalEdit, setToggleModalEdit] = useState(false);
 

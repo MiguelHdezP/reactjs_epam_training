@@ -70,7 +70,7 @@ export default function App() {
               text={`${dataMovies.length} movies found`}
               styleAdjustment="container-moviesSection-list-heading"
             />
-            <MovieCardsList movieList={dataMovies} />
+            <MovieCardsList />
           </div>
         </section>
       </main>
