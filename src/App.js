@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import useFetchData from "./hooks/useFetchData";
 import "./styles/layout.scss";
 import "./styles/base.scss";
 import SearchBar from "./components/search-bar/SearchBar";
@@ -12,23 +13,8 @@ import Modal from "./components/shared/modal/Modal";
 import AddMovieForm from "./components/add-movie-form/AddMovieForm";
 
 export default function App() {
-  const [dataMovies, setDataMovies] = useState([]);
+  const dataMovies = useFetchData("http://localhost:4000/movies");
   const [closeModal, setCloseModal] = useState(false);
-
-  useEffect(() => {
-    async function fetchMovies() {
-      const URL = "http://localhost:4000/movies";
-      try {
-        const response = await fetch(URL);
-        const movies = await response.json();
-        setDataMovies(movies.data);
-      } catch (err) {
-        alert(err);
-      }
-    }
-
-    fetchMovies();
-  }, []);
 
   //there is no need to do this, but I'm just practicing wrapping a bunch of useful functions and pass them on as object
   function actions() {
