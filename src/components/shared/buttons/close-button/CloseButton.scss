@@ -1,0 +1,18 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
+
+.close-button {
+  color: $white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: unset;
+  margin: 0;
+}
+.right {
+  font-size: 0.8rem;
+  float: right;
+  &:hover {
+    color: $lightFontGray;
+  }
+}

@@ -1,0 +1,54 @@
+@import "./variables.scss";
+
+html,
+body {
+  background-color: $baseGray;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+
+  label {
+    color: $redPink;
+    display: block;
+    font-weight: 500;
+    margin: 1rem 0;
+    text-transform: uppercase;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  input[type="checkbox"] {
+    display: inline-block;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.6;
+    filter: invert(0.8);
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: $white;
+    font-family: inherit;
+    text-transform: uppercase;
+  }
+
+  form {
+    width: auto;
+  }
+
+  fieldset {
+    border: none;
+  }
+}

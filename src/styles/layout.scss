@@ -1,0 +1,44 @@
+@import "./variables.scss";
+
+.container {
+  margin: 0rem auto 0.5rem;
+  width: 90%;
+  .container-mainHeader {
+    background-color: rgba(0, 0, 0, 0.7);
+    background-image: url("../assets/images/Bitmap.png");
+    background-position-y: -40px;
+    background-size: cover;
+    padding: 1.5rem 3rem 8rem;
+
+    .container-sections {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .container-searchbox {
+      width: 90%;
+      margin: 4rem auto 0;
+      .container-searchbox-heading {
+        color: $white;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .container-moviesSection {
+    background-color: $darker;
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    .container-moviesSection-header {
+      margin-left: 0.35rem;
+    }
+    .container-moviesSection-list {
+      margin-top: 2rem;
+      .container-moviesSection-list-heading {
+        color: $white;
+        font-size: 1.25rem;
+        font-weight: 400;
+        margin-left: 0.35rem;
+      }
+    }
+  }
+}
