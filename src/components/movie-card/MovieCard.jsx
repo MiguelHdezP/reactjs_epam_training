@@ -7,12 +7,14 @@ import { ArrayToCommaList } from "../../utils/ArrayOperations";
 import Tooltip from "../shared/tooltip/Tooltip";
 
 export default function MovieCard({
+  id,
   imagePath,
   title,
   date,
   genres,
   openCloseModalEdit,
   openCloseModalDelete,
+  movieDetails,
 }) {
   const [toggleTootip, setToggleTooltip] = useState(true);
   const MovieYear = DateYear(date);
@@ -46,7 +48,6 @@ export default function MovieCard({
           toggleModalDelete={openCloseModalDelete}
         />
       )}
-
       <img
         className="movieCard-image"
         src={imagePath}
@@ -55,6 +56,9 @@ export default function MovieCard({
           e.target.onerror = null;
           e.target.src =
             "https://dummyimage.com/600x800/ccc/fff.jpg&text=No+image+available";
+        }}
+        onClick={() => {
+          movieDetails(id);
         }}
       />
       <div className="movieCard-info">
@@ -67,10 +71,12 @@ export default function MovieCard({
 }
 
 MovieCard.propTypes = {
+  id: PropTypes.number.isRequired,
   imagePath: PropTypes.string,
   title: PropTypes.string,
   date: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
   openCloseModalEdit: PropTypes.func,
   openCloseModalDelete: PropTypes.func,
+  movieDetails: PropTypes.func,
 };

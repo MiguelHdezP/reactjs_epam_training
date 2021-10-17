@@ -8,7 +8,7 @@ import Modal from "../shared/modal/Modal";
 import DeleteMovieForm from "../delete-movie-form/DeleteMovieForm";
 import EditMovieForm from "../edit-movie-form/EditMovieForm";
 
-export default function MovieCardsList() {
+export default function MovieCardsList({ movieDetails }) {
   const movieList = useContext(MoviesContext);
   const [toggleModalDelete, setToggleModalDelete] = useState(false);
   const [toggleModalEdit, setToggleModalEdit] = useState(false);
@@ -18,7 +18,6 @@ export default function MovieCardsList() {
   }
   function openCloseModalEdit() {
     setToggleModalEdit(!toggleModalEdit);
-    console.log("Chito: ", toggleModalEdit);
   }
 
   return (
@@ -46,12 +45,14 @@ export default function MovieCardsList() {
               <li key={id}>
                 <ErrorBoundary>
                   <MovieCard
+                    id={id}
                     imagePath={poster_path}
                     title={title}
                     date={release_date}
                     genres={genres}
                     openCloseModalEdit={openCloseModalEdit}
                     openCloseModalDelete={openCloseModalDelete}
+                    movieDetails={movieDetails}
                   />
                 </ErrorBoundary>
               </li>
@@ -65,6 +66,7 @@ export default function MovieCardsList() {
 
 MovieCardsList.propTypes = {
   movieList: PropTypes.array,
+  movieDetails: PropTypes.func,
 };
 
 /*

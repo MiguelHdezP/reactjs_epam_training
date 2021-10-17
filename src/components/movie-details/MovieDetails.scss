@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.movieDetails {
+  background-color: rgba(0, 0, 0, 0.9);
+  background-image: url("../../assets/images/Bitmap.png");
+  background-position-y: -40px;
+  background-size: cover;
+  padding: 1.5rem 3rem 8rem;
+  padding: 2rem;
+  .movieDetails-header {
+    display: flex;
+    justify-content: space-between;
+    .movieDetails-header-searchIcon {
+      cursor: pointer;
+      width: 70%;
+    }
+  }
+  .movieDetails-section {
+    display: flex;
+    .movieDetails-section-imageContainer {
+      margin-right: 3.5rem;
+      .movieDetails-section-image {
+        max-width: 18rem;
+      }
+    }
+    .movieDetails-info {
+      color: $white;
+      .movieDetails-info-titleRating {
+        display: flex;
+        .movieDetails-info-title {
+          font-weight: 300;
+          margin-right: 2rem;
+        }
+        .movieDetails-info-rating {
+          align-self: center;
+          border: 1px solid $white;
+          border-radius: 50%;
+          font-size: 1.25rem;
+          font-weight: 300;
+          height: 3rem;
+          line-height: 3rem;
+          text-align: center;
+          width: 3rem;
+        }
+      }
+      .movieDetails-info-genre {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: rgba($color: $white, $alpha: 0.5);
+      }
+      .movieDetails-info-dateTime {
+        color: $redPink;
+        font-size: 1.5rem;
+        font-weight: 300;
+        .movieDetails-info-date {
+          margin-right: 2rem;
+        }
+      }
+      .movieDetails-info-overview {
+        font-size: 1.25rem;
+        font-weight: 300;
+        color: rgba($color: $white, $alpha: 0.5);
+      }
+    }
+  }
+}

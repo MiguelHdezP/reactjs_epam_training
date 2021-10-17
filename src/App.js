@@ -11,17 +11,25 @@ import GenresNav from "./components/genresNav/GenresNav";
 import { MoviesContext } from "./context/MoviesContext";
 import Modal from "./components/shared/modal/Modal";
 import AddMovieForm from "./components/add-movie-form/AddMovieForm";
+import MovieDetails from "./components/movie-details/MovieDetails";
+import { ReturnSelectedMovie } from "./utils/ReturnSelectedMovie";
 
 export default function App() {
   const dataMovies = useFetchData("http://localhost:4000/movies");
   const [closeModal, setCloseModal] = useState(false);
+  const [toggleMovieDetails, setToggleMovieDetails] = useState(false);
+  const [movideDetailsId, setMovideDetailsId] = useState(null);
 
   //there is no need to do this, but I'm just practicing wrapping a bunch of useful functions and pass them on as object
   function actions() {
     function CloseModal() {
       setCloseModal(!closeModal);
     }
-    return { CloseModal };
+    function OpenMovideDetails(id) {
+      setMovideDetailsId(id);
+      setToggleMovieDetails(!toggleMovieDetails);
+    }
+    return { CloseModal, OpenMovideDetails };
   }
 
   return (
@@ -32,20 +40,32 @@ export default function App() {
         </Modal>
       )}
       <main className="container">
-        <header className="container-mainHeader">
-          <div className="container-sections">
-            <img src={HeaderLogo} alt="Netflix Roulette Logo" />
-            <ButtonIcon text="Add Movie" click={actions().CloseModal} />
-          </div>
-          <div className="container-searchbox">
-            <Headings
-              type="h1"
-              text="Find your movie"
-              styleAdjustment="container-searchbox-heading"
-            />
-            <SearchBar />
-          </div>
-        </header>
+        {toggleMovieDetails ? (
+          <header className="container-movieDetails">
+            {
+              <MovieDetails
+                movie={ReturnSelectedMovie(movideDetailsId, dataMovies)}
+                click={actions().OpenMovideDetails}
+              />
+            }
+          </header>
+        ) : (
+          <header className="container-mainHeader">
+            <div className="container-sections">
+              <img src={HeaderLogo} alt="Netflix Roulette Logo" />
+              <ButtonIcon text="Add Movie" click={actions().CloseModal} />
+            </div>
+            <div className="container-searchbox">
+              <Headings
+                type="h1"
+                text="Find your movie"
+                styleAdjustment="container-searchbox-heading"
+              />
+              <SearchBar />
+            </div>
+          </header>
+        )}
+
         <section className="container-moviesSection">
           <header className="container-moviesSection-header">
             <GenresNav />
@@ -56,7 +76,7 @@ export default function App() {
               text={`${dataMovies.length} movies found`}
               styleAdjustment="container-moviesSection-list-heading"
             />
-            <MovieCardsList />
+            <MovieCardsList movieDetails={actions().OpenMovideDetails} />
           </div>
         </section>
       </main>
