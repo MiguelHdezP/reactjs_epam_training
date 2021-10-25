@@ -8,7 +8,7 @@ export default function ActionButton({
   click,
   styleAdjustments = "",
 }) {
-  let buttonStyles = `action-button ${classStyle} ${styleAdjustments}`;
+  let buttonStyles = `actioButton ${classStyle} ${styleAdjustments}`;
 
   return (
     <button className={buttonStyles} type="button" onClick={click}>

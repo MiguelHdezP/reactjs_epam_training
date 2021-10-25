@@ -19,7 +19,6 @@ export default function MovieDetails({ movie = [], click }) {
       genres,
     } = movie[0];
     const MovieYear = DateYear(release_date);
-    console.log("Chetuito: ");
     return (
       <div className="movieDetails">
         <header className="movieDetails-header">
@@ -33,7 +32,7 @@ export default function MovieDetails({ movie = [], click }) {
               className="movieDetails-header-searchIcon"
               src={Magnifier}
               alt="Search Bar"
-              onClick={click}
+              onClick={() => click(false)}
             />
           </div>
         </header>

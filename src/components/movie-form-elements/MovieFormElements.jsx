@@ -2,7 +2,7 @@ import React from "react";
 import "./MovieFormElements.scss";
 import Label from "../shared/label/Label";
 import InputText from "../shared/inputText/InputText";
-import DatePicker from "../shared/buttons/date-picker/DatePicker";
+import DatePicker from "../shared/date-picker/DatePicker";
 import MultiSelect from "../shared/multi-select/MultiSelect";
 import TextArea from "../shared/textarea/TextArea";
 

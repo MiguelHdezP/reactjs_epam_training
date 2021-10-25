@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import useFetchData from "./hooks/useFetchData";
-import "./styles/layout.scss";
-import "./styles/base.scss";
-import SearchBar from "./components/search-bar/SearchBar";
-import Headings from "./components/shared/headings/Headings";
-import ButtonIcon from "./components/shared/buttons/button-icon/ButtonIcon";
-import HeaderLogo from "./assets/images/netflixroulette.png";
-import MovieCardsList from "./components/movie-cards-list/MovieCardsList";
-import GenresNav from "./components/genresNav/GenresNav";
-import { MoviesContext } from "./context/MoviesContext";
-import Modal from "./components/shared/modal/Modal";
-import AddMovieForm from "./components/add-movie-form/AddMovieForm";
-import MovieDetails from "./components/movie-details/MovieDetails";
-import { ReturnSelectedMovie } from "./utils/ReturnSelectedMovie";
+import useFetchData from "../hooks/useFetchData";
+import "../styles/layout.scss";
+import "../styles/base.scss";
+import SearchBar from "./search-bar/SearchBar";
+import Headings from "./shared/headings/Headings";
+import ButtonIcon from "./shared/buttons/button-icon/ButtonIcon";
+import HeaderLogo from "../assets/images/netflixroulette.png";
+import MovieCardsList from "./movie-cards-list/MovieCardsList";
+import GenresNav from "./genresNav/GenresNav";
+import { MoviesContext } from "../context/MoviesContext";
+import Modal from "./shared/modal/Modal";
+import AddMovieForm from "./add-movie-form/AddMovieForm";
+import MovieDetails from "./movie-details/MovieDetails";
+import { ReturnSelectedMovie } from "../utils/ReturnSelectedMovie";
 
 export default function App() {
   const dataMovies = useFetchData("http://localhost:4000/movies");
@@ -20,23 +20,19 @@ export default function App() {
   const [toggleMovieDetails, setToggleMovieDetails] = useState(false);
   const [movideDetailsId, setMovideDetailsId] = useState(null);
 
-  //there is no need to do this, but I'm just practicing wrapping a bunch of useful functions and pass them on as object
-  function actions() {
-    function CloseModal() {
-      setCloseModal(!closeModal);
-    }
-    function OpenMovideDetails(id) {
-      setMovideDetailsId(id);
-      setToggleMovieDetails(!toggleMovieDetails);
-    }
-    return { CloseModal, OpenMovideDetails };
+  function toggleModal() {
+    setCloseModal(!closeModal);
+  }
+  function openMovideDetails(id) {
+    setMovideDetailsId(id);
+    setToggleMovieDetails(true);
   }
 
   return (
     <MoviesContext.Provider value={dataMovies}>
       {closeModal && (
         <Modal>
-          <AddMovieForm actions={actions()} />
+          <AddMovieForm toggleModal={toggleModal} />
         </Modal>
       )}
       <main className="container">
@@ -45,7 +41,7 @@ export default function App() {
             {
               <MovieDetails
                 movie={ReturnSelectedMovie(movideDetailsId, dataMovies)}
-                click={actions().OpenMovideDetails}
+                click={setToggleMovieDetails}
               />
             }
           </header>
@@ -53,7 +49,7 @@ export default function App() {
           <header className="container-mainHeader">
             <div className="container-sections">
               <img src={HeaderLogo} alt="Netflix Roulette Logo" />
-              <ButtonIcon text="Add Movie" click={actions().CloseModal} />
+              <ButtonIcon text="Add Movie" click={toggleModal} />
             </div>
             <div className="container-searchbox">
               <Headings
@@ -76,7 +72,7 @@ export default function App() {
               text={`${dataMovies.length} movies found`}
               styleAdjustment="container-moviesSection-list-heading"
             />
-            <MovieCardsList movieDetails={actions().OpenMovideDetails} />
+            <MovieCardsList movieDetails={openMovideDetails} />
           </div>
         </section>
       </main>

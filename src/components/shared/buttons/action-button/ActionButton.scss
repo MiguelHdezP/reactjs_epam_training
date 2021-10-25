@@ -1,7 +1,7 @@
 @import "../../../../styles/variables.scss";
 @import "../../../../styles/mixins.scss";
 
-.action-button {
+.actioButton {
   @include borderRadius(4px);
   background-color: $redPink;
   border: none;
