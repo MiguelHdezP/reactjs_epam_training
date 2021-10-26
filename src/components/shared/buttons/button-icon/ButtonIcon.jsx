@@ -2,15 +2,14 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./ButtonIcon.scss";
 
-export default function ButtonIcon({ text = "", click }) {
+export default function ButtonIcon({ children, click }) {
   return (
     <button type="button" className="buttonIcon" onClick={click}>
-      + {text}
+      {children}
     </button>
   );
 }
 
 ButtonIcon.propTypes = {
-  text: PropTypes.string.isRequired,
   click: PropTypes.func.isRequired,
 };

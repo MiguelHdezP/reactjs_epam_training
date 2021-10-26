@@ -49,7 +49,7 @@ export default function App() {
           <header className="container-mainHeader">
             <div className="container-sections">
               <img src={HeaderLogo} alt="Netflix Roulette Logo" />
-              <ButtonIcon text="Add Movie" click={toggleModal} />
+              <ButtonIcon click={toggleModal}>&#43; Add Movie</ButtonIcon>
             </div>
             <div className="container-searchbox">
               <Headings
