@@ -14,13 +14,12 @@ import {
   InputTextarea,
 } from "../movie-form-elements/MovieFormElements";
 
-export default function AddMovie({ actions }) {
-  const { CloseModal } = actions;
+export default function AddMovie({ toggleModal }) {
   return (
     <ModalContainer>
       <>
         <CloseButton
-          click={CloseModal}
+          click={toggleModal}
           styleAdjustment="addMovie-closeButton"
         />
         <Headings
